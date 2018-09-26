@@ -5,10 +5,22 @@ using namespace std;
 
 class Webpage {
 public:
-    Webpage();
-    Webpage(const string& webpageUrl, const time_t& timeVisited);
-    string getUrl();
-    time_t getTime();
+    Webpage(){
+    url = "";
+    time = 0;
+    }
+
+    Webpage(const string& webpageUrl, const time_t& timeVisited){
+	url = webpageUrl;
+	time = timeVisited;
+    }
+
+    string getUrl(){
+	return url;
+    }
+    time_t getTime(){
+	return time;
+    }
 
 private:
     string url;
