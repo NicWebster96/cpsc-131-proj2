@@ -62,8 +62,8 @@ BrowserHistory::BrowserHistory(){
 
 void BrowserHistory::visitSite(Webpage newsite) {
 	
-	if (&navPos != nullptr) {
-		for (navPos = navHistory.begin(); navPos != navHistory.end(); navPos++) {
+	if ( navPos != navHistory.end()) { 
+		for (navPos = navHistory.begin(); navPos != navHistory.end(); navPos++) {       //wrong
 			navHistory.push_back(newsite);
 			navHistory.pop_back();
 		}
@@ -100,7 +100,7 @@ size_t BrowserHistory::getNavSize(){
 }
 
 list<Webpage> BrowserHistory::getSitesVisited() {
-
+	return sitesVisited;
 }
 
 
