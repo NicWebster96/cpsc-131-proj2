@@ -62,14 +62,11 @@ BrowserHistory::BrowserHistory(){
 
 void BrowserHistory::visitSite(Webpage newsite) {
 	
-	if ( navPos != navHistory.end()) { 
-		for (navPos = navHistory.begin(); navPos != navHistory.end(); navPos++) {       //wrong
-			navHistory.push_back(newsite);
-			navHistory.pop_back();
-		}
+	while (navPos != navHistory.end()) {
+		navHistory.pop_back();
 	}
-	else
-		navHistory.push_back(newsite);
+	navHistory.push_back(newsite);
+	sitesVisited.push_back(newsite);
 }
 
 string BrowserHistory::back() {
@@ -84,7 +81,6 @@ string BrowserHistory::forward() {
 	if (navPos != navHistory.end()) {
 		navPos++;
 		return navPos->getUrl();
-
 		}
 	else 
 		throw invalid_argument("You cannot go forward");
