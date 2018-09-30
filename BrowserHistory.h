@@ -90,7 +90,7 @@ string BrowserHistory::forward() {
 {
 	 Webpage temp;
 	 temp = *navPos;
-	 return navPos -> getUrl();
+	 return temp.getUrl();
 }
 
 size_t BrowserHistory::getNavSize(){
