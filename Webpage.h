@@ -23,8 +23,8 @@ Webpage::Webpage() {
 }
 
 Webpage::Webpage(const string& webpageUrl, const time_t& timeVisited) {
-	this -> url = webpageUrl;
-	this -> time = timeVisited;
+	url = webpageUrl;
+	time = timeVisited;
 }
 
 string Webpage::getUrl() {

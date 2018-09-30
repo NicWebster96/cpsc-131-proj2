@@ -67,6 +67,7 @@ void BrowserHistory::visitSite(Webpage newsite) {
 	}
 	navHistory.push_back(newsite);
 	sitesVisited.push_back(newsite);
+	numSites++;
 }
 
 string BrowserHistory::back() {
@@ -88,7 +89,9 @@ string BrowserHistory::forward() {
 
  string BrowserHistory::getUrl()
 {
-	 return navPos -> getUrl();
+	 if (numSites == 0)
+		 throw invalid_argument("You have visited no sites");
+	return (*navPos).getUrl();
 }
 
 size_t BrowserHistory::getNavSize(){
