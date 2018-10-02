@@ -66,9 +66,9 @@ void BrowserHistory::visitSite(Webpage newsite) {
 	if ( numSites == 0) {
 		navPos = navHistory.begin();
 	}
-	while (navPos != navHistory.end()) {
-			navHistory.pop_back();	
-	}
+	//while (navPos != navHistory.end()) {
+	//		navHistory.pop_back();	
+	//}
 	navHistory.push_back(newsite);
 	navPos++;
 	numSites ++;
