@@ -60,11 +60,11 @@ BrowserHistory::BrowserHistory(){
 	numSites = 0;
 }
 
-/*void BrowserHistory::visitSite(Webpage newsite) {
+void BrowserHistory::visitSite(Webpage newsite) {
 	
 	sitesVisited.push_back(newsite);
-	if ( navHistory.empty()) {
-		navHistory.push_back(newsite);
+	if ( numSites == 0) {
+		navPos = navHistory.begin();
 	}
 	else {
 		while (navPos != navHistory.end()) {
@@ -73,8 +73,8 @@ BrowserHistory::BrowserHistory(){
 	}
 	navHistory.push_back(newsite);
 	navPos++;
-	numSites++;
-}*/
+	numSites += 1;
+}
 
 string BrowserHistory::back() {
 	if (navPos != navHistory.begin()) {
@@ -97,6 +97,9 @@ string BrowserHistory::forward() {
 
  string BrowserHistory::getUrl()
 {
+	 if (numSites == 0) {
+		 throw invalid_argument("You have not visited any sites");
+	 }
 	return navPos->getUrl();
 }
 
