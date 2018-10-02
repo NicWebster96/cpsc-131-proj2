@@ -60,7 +60,7 @@ BrowserHistory::BrowserHistory(){
 	numSites = 0;
 }
 
-void BrowserHistory::visitSite(Webpage newsite) {
+/*void BrowserHistory::visitSite(Webpage newsite) {
 	
 	sitesVisited.push_back(newsite);
 	if ( navHistory.empty()) {
@@ -74,7 +74,7 @@ void BrowserHistory::visitSite(Webpage newsite) {
 	navHistory.push_back(newsite);
 	navPos++;
 	numSites++;
-}
+*/}
 
 string BrowserHistory::back() {
 	if (navPos != navHistory.begin()) {
