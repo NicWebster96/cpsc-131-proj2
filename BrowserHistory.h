@@ -104,7 +104,7 @@ string BrowserHistory::forward() {
 }
 
 size_t BrowserHistory::getNavSize(){
-	return navHistory.size();
+	return numSites;
 }
 
 list<Webpage> BrowserHistory::getSitesVisited() {
