@@ -73,10 +73,11 @@ void BrowserHistory::visitSite(Webpage newsite) {
 	}
 	navHistory.push_back(newsite);
 	navPos++;
-	numSites += 1;
+	numSites ++;
 }
 
 string BrowserHistory::back() {
+	numSites--;
 	if (navPos != navHistory.begin()) {
 		navPos--;
 	}
@@ -86,6 +87,7 @@ string BrowserHistory::back() {
 
 }
 string BrowserHistory::forward() {
+	numSites++;
 	if (navPos != navHistory.end()) {
 		navPos++;
 	}
@@ -104,7 +106,7 @@ string BrowserHistory::forward() {
 }
 
 size_t BrowserHistory::getNavSize(){
-	return navHistory.size();
+	return numSites;
 }
 
 list<Webpage> BrowserHistory::getSitesVisited() {
