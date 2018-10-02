@@ -74,7 +74,7 @@ BrowserHistory::BrowserHistory(){
 	navHistory.push_back(newsite);
 	navPos++;
 	numSites++;
-*/}
+}*/
 
 string BrowserHistory::back() {
 	if (navPos != navHistory.begin()) {
