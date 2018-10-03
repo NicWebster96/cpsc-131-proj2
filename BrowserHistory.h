@@ -24,7 +24,7 @@ public:
 
 private:
 	list<Webpage> navHistory;
-	list<Webpage>::iterator navPos = navHistory.begin();
+	list<Webpage>::iterator navPos;
 	list<Webpage> sitesVisited;
 	int numSites;
 };
@@ -61,51 +61,50 @@ BrowserHistory::BrowserHistory(){
 }
 
 void BrowserHistory::visitSite(Webpage newsite) {
-    
+	
 	sitesVisited.push_back(newsite);
-	if (numSites == 0) {
+	if ( numSites == 0) {
 		navPos = navHistory.begin();
 	}
-    
-    
-    while ((numSites > 1) && (navPos == navHistory.begin())) {
-        navHistory.pop_back();
-        numSites--;
-    }
-    
+	//while (navPos != navHistory.end()) {
+	//		navHistory.pop_back();	
+	//}
 	navHistory.push_back(newsite);
-	navPos++;
-	numSites = numSites + 1;
+	++navPos;
+	++numSites;
 }
 
 string BrowserHistory::back() {
-	if(navPos != navHistory.begin()) {
-		navPos--;
-    } else {
+	if (navPos != navHistory.begin()) {
+		navPos--;	
+		numSites--;
+	}
+	else
 		throw invalid_argument("You cannot go back");
-    }
-    numSites--;
-    return getUrl();
-}
-
-string BrowserHistory::forward() {
-	if(navPos != navHistory.end()) {
-		navPos++;
-    } else {
-       throw invalid_argument("You cannot go forward");
-    }
-    numSites++;
 	return getUrl();
+
+}
+string BrowserHistory::forward() {
+	
+	if (navPos != navHistory.end()) {
+		navPos++;
+		numSites++;
+	}
+	else 
+		throw invalid_argument("You cannot go forward");
+	return getUrl();
+
 }
 
-string BrowserHistory::getUrl() {
-    if (numSites == 0) {
-        throw invalid_argument("You have not visited any sites");
-    }
-    return navPos->getUrl();
+ string BrowserHistory::getUrl()
+{
+	 if (numSites == 0) {
+		 throw invalid_argument("You have not visited any sites");
+	 }
+	return navPos->getUrl();
 }
 
-size_t BrowserHistory::getNavSize() {
+size_t BrowserHistory::getNavSize(){
 	return numSites;
 }
 
