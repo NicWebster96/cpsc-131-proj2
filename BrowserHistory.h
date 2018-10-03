@@ -61,49 +61,48 @@ BrowserHistory::BrowserHistory(){
 }
 
 void BrowserHistory::visitSite(Webpage newsite) {
-	
+    
 	sitesVisited.push_back(newsite);
-	if ( numSites == 0) {
+	if (numSites == 0) {
 		navPos = navHistory.begin();
 	}
-	//while (navPos != navHistory.end()) {
-	//		navHistory.pop_back();	
-	//}
+    
+	while ((numSites > 1) && (navPos == navHistory.begin())) {
+        navHistory.pop_back();
+        numSites--;
+	}
+    
 	navHistory.push_back(newsite);
 	navPos++;
-	numSites ++;
+	numSites = numSites + 1;
 }
 
-string BrowserHistory::back() {
-	numSites--;
-	if (navPos != navHistory.begin()) {
+string BrowserHistory::back() { //back should not remove numSites, only lower navPos
+	if(navPos != navHistory.begin()) {
 		navPos--;
-	}
-	else
+    } else {
 		throw invalid_argument("You cannot go back");
-	return getUrl();
-
+    }
+    return getUrl();
 }
+
 string BrowserHistory::forward() {
-	numSites++;
-	if (navPos != navHistory.end()) {
+	if(navPos != navHistory.end()) {
 		navPos++;
-	}
-	else 
-		throw invalid_argument("You cannot go forward");
+    } else {
+       throw invalid_argument("You cannot go forward");
+    }
 	return getUrl();
-
 }
 
- string BrowserHistory::getUrl()
-{
-	 if (numSites == 0) {
-		 throw invalid_argument("You have not visited any sites");
-	 }
-	return navPos->getUrl();
+string BrowserHistory::getUrl() {
+    if (numSites == 0) {
+        throw invalid_argument("You have not visited any sites");
+    }
+    return navPos->getUrl();
 }
 
-size_t BrowserHistory::getNavSize(){
+size_t BrowserHistory::getNavSize() {
 	return numSites;
 }
 
