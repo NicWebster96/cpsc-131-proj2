@@ -24,7 +24,7 @@ public:
 
 private:
 	list<Webpage> navHistory;
-	list<Webpage>::iterator navPos;
+	list<Webpage>::iterator navPos = navHistory.begin();
 	list<Webpage> sitesVisited;
 	int numSites;
 };
@@ -67,22 +67,24 @@ void BrowserHistory::visitSite(Webpage newsite) {
 		navPos = navHistory.begin();
 	}
     
-	while ((numSites > 1) && (navPos == navHistory.begin())) {
+    
+    while ((numSites > 1) && (navPos == navHistory.begin())) {
         navHistory.pop_back();
         numSites--;
-	}
+    }
     
 	navHistory.push_back(newsite);
 	navPos++;
 	numSites = numSites + 1;
 }
 
-string BrowserHistory::back() { //back should not remove numSites, only lower navPos
+string BrowserHistory::back() {
 	if(navPos != navHistory.begin()) {
 		navPos--;
     } else {
 		throw invalid_argument("You cannot go back");
     }
+    numSites--;
     return getUrl();
 }
 
@@ -92,6 +94,7 @@ string BrowserHistory::forward() {
     } else {
        throw invalid_argument("You cannot go forward");
     }
+    numSites++;
 	return getUrl();
 }
 
