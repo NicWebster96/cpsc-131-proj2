@@ -74,8 +74,8 @@ void BrowserHistory::visitSite(Webpage newsite) {
 string BrowserHistory::back() {
 	//if (navPos != navHistory.begin()) {
 		numSites--;	
-		return getUrl();
 		navPos--;	
+		return navPos->getUrl();
 		
 	//}
 	//else
@@ -85,7 +85,7 @@ string BrowserHistory::forward() {
 	//if (navPos != navHistory.end()) {
 		numSites++;
 		navPos++;
-		return getUrl();
+		return navPos->getUrl();
 	//}
 	//else 
 	//	throw invalid_argument("You cannot go forward");
