@@ -54,10 +54,10 @@ void BrowserHistory::readHistory(string fileName) {
 }
 
 BrowserHistory::BrowserHistory(){
-	//navHistory = {};
-	//navPos = {};
-	//sitesVisited = {};
-	//numSites = 0;
+	navHistory = {};
+	navPos = {};
+	sitesVisited = {};
+	numSites = 0;
 }
 
 void BrowserHistory::visitSite(Webpage newsite) {
@@ -66,28 +66,27 @@ void BrowserHistory::visitSite(Webpage newsite) {
 	if ( numSites == 0) {
 		navPos = navHistory.begin();
 	}
-	else ++navPos;
-	numSites +=1;
+	++navPos;
+	++numSites;
 }
 
 string BrowserHistory::back() {
-	//if (navPos != navHistory.begin()) {
+	if (navPos != navHistory.begin()) {
 		numSites--;	
-		navPos--;	
+		--navPos;	
 		return navPos->getUrl();
-		
-	//}
-	//else
-	//	throw invalid_argument("You cannot go back");
+		}
+	else
+		throw invalid_argument("You cannot go back");
 }
 string BrowserHistory::forward() {
-	//if (navPos != navHistory.end()) {
+	if (navPos != navHistory.end()) {
 		numSites++;
-		navPos++;
+		++navPos;
 		return navPos->getUrl();
-	//}
-	//else 
-	//	throw invalid_argument("You cannot go forward");
+	}
+	else 
+		throw invalid_argument("You cannot go forward");
 }
 
  string BrowserHistory::getUrl(){
