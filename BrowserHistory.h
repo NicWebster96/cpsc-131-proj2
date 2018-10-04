@@ -54,10 +54,10 @@ void BrowserHistory::readHistory(string fileName) {
 }
 
 BrowserHistory::BrowserHistory(){
-	navHistory = {};
-	navPos = {};
-	sitesVisited = {};
-	numSites = 0;
+	//navHistory = {};
+	//navPos = {};
+	//sitesVisited = {};
+	//numSites = 0;
 }
 
 void BrowserHistory::visitSite(Webpage newsite) {
@@ -66,9 +66,8 @@ void BrowserHistory::visitSite(Webpage newsite) {
 	if ( numSites == 0) {
 		navPos = navHistory.begin();
 	}
-	else 
-		++navPos;
-	++numSites;
+	else ++navPos;
+	numSites +=1;
 }
 
 string BrowserHistory::back() {
