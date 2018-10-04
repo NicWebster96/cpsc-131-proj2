@@ -62,10 +62,10 @@ BrowserHistory::BrowserHistory(){
 
 void BrowserHistory::visitSite(Webpage newsite) {
 	sitesVisited.push_back(newsite);	
-	navHistory.push_back(newsite);
 	if ( numSites == 0) {
 		navPos = navHistory.begin();
 	}
+	navHistory.push_back(newsite);
 	++navPos;
 	++numSites;
 }
