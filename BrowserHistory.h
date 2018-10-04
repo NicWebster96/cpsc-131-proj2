@@ -75,7 +75,7 @@ string BrowserHistory::back() {
 	if (navPos != navHistory.begin()) {
 		numSites--;
 		return getUrl();	
-		navPos--;	
+		//navPos--;	
 
 	}
 	else
@@ -88,7 +88,7 @@ string BrowserHistory::forward() {
 	if (navPos != navHistory.end()) {
 		numSites++;
 		return getUrl();
-		navPos++;
+		//navPos++;
 	}
 	else 
 		throw invalid_argument("You cannot go forward");
