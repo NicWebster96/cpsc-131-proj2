@@ -17,19 +17,19 @@ private:
 	
 };
 
-Webpage::Webpage() {
+Webpage::Webpage() {          //initializes url and time to 0
 	url = "";
 	time = 0;
 }
 
-Webpage::Webpage(const string& webpageUrl, const time_t& timeVisited) {
+Webpage::Webpage(const string& webpageUrl, const time_t& timeVisited) {    //sets url and time to be accessed
 	url = webpageUrl;
 	time = timeVisited;
 }
 
-string Webpage::getUrl() {
+string Webpage::getUrl() {      //returns a string that is url
 	return url;
 }
-time_t Webpage::getTime() {
+time_t Webpage::getTime() {    //returns the time when the site was visited
 	return time;
 }
