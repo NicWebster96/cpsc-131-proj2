@@ -81,13 +81,14 @@ string BrowserHistory::back() {
 		--navPos;
 	}
 	else throw invalid_argument("You cannot go back");
-		return navPos->getUrl();
+	return navPos->getUrl();
 }
 string BrowserHistory::forward() {
 	if (navPos != --navHistory.end()) {
 		++numSites;
 		++navPos;
 	}		
+	else throw invalid_argument("You cannot go forward");
 	return navPos->getUrl();
 
 }
