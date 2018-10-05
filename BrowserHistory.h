@@ -76,12 +76,12 @@ void BrowserHistory::visitSite(Webpage newsite) {
 }
 
 string BrowserHistory::back() {
-		--numSites;	
+		//--numSites;	
 		--navPos;	
 		return navPos->getUrl();
 }
 string BrowserHistory::forward() {
-		++numSites;
+		//++numSites;
 		++navPos;		
 		return navPos->getUrl();
 }
