@@ -84,7 +84,10 @@ string BrowserHistory::back() {
 	return navPos->getUrl();
 }
 string BrowserHistory::forward() {
-	if (navPos != --navHistory.end()) {
+	list<Webpage>::iterator it;
+	it = navHistory.end();
+	--it;
+	if (navPos != it){
 		++numSites;
 		++navPos;
 	}		
