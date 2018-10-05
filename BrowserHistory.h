@@ -84,9 +84,12 @@ string BrowserHistory::back() {
 		return navPos->getUrl();
 }
 string BrowserHistory::forward() {
+	if (navPos != --navHistory.end()) {
 		++numSites;
-		++navPos;		
-		return navPos->getUrl();
+		++navPos;
+	}		
+	return navPos->getUrl();
+
 }
 
  string BrowserHistory::getUrl(){
